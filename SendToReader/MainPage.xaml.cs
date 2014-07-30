@@ -101,8 +101,7 @@ namespace SendToReader
 
                     if (IsShareTarget == true)
                     {
-                        if (Frame.CanGoBack == true)
-                            Frame.GoBack();
+                        App.Current.Exit();
                     }
                     else
                     {
