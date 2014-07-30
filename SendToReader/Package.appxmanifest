@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="f7eb96ae-322a-4ce2-beb0-25cc2c642959" Publisher="CN=mattmc" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="f7eb96ae-322a-4ce2-beb0-25cc2c642959" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="9799MattMcCormick.SendToReader" Publisher="CN=C6F6E569-3D6B-467C-ACB2-38BF1E5BE1A1" Version="1.1.0.2" />
+  <mp:PhoneIdentity PhoneProductId="3f0253d4-e254-4860-b35c-7340c1c6fd0a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Send To Reader</DisplayName>
-    <PublisherDisplayName>mattmc</PublisherDisplayName>
+    <PublisherDisplayName>Matt McCormick</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
