@@ -16,7 +16,8 @@ namespace SendToReader.API
         {
             HttpWebRequest request = HttpWebRequest.Create("http://sendtoreader.cloudapp.net") as HttpWebRequest;
             request.Method = "POST";
-
+            request.ContentType = "application/x-www-form-urlencoded";
+            
             var upload = await request.GetRequestStreamAsync().ConfigureAwait(false);
 
             UTF8Encoding encoding1 = new UTF8Encoding();
@@ -33,8 +34,10 @@ namespace SendToReader.API
             UTF8Encoding encoding2 = new UTF8Encoding();
             StreamReader sr = new StreamReader(stream, encoding2);
 
+            string html = sr.ReadToEnd();
+
             HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(sr.ReadToEnd());
+            doc.LoadHtml(html);
 
             var nodes = doc.DocumentNode.Descendants("p").ToList();
 
