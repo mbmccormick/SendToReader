@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using SendToReader.API;
 using SendToReader.API.Models;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
@@ -48,6 +50,11 @@ namespace SendToReader
 
         private async void LoadData()
         {
+            if (ApplicationData.Current.RoamingSettings.Values.ContainsKey("EmailAddress"))
+            {
+                this.txtEmailAddress.Text = ApplicationData.Current.RoamingSettings.Values["EmailAddress"] as string;
+            }
+
             var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
 
             statusBar.ProgressIndicator.ProgressValue = null;
@@ -67,6 +74,11 @@ namespace SendToReader
 
         private async void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            if (ValidateData() == false)
+                return;
+
+            ApplicationData.Current.RoamingSettings.Values["EmailAddress"] = this.txtEmailAddress.Text;
+
             var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
 
             statusBar.ProgressIndicator.ProgressValue = null;
@@ -85,7 +97,7 @@ namespace SendToReader
                     statusBar.ProgressIndicator.ProgressValue = 0.0;
                     statusBar.ProgressIndicator.ShowAsync();
 
-                    this.txtEmailAddress.Text = "";
+                    this.txtURL.Text = "";
 
                     if (IsShareTarget == true)
                     {
@@ -99,6 +111,43 @@ namespace SendToReader
                     }
                 });
             }, data);
+        }
+
+        private bool ValidateData()
+        {
+            if (this.txtURL.Text.Length <= 0)
+            {
+                MessageDialog dialog = new MessageDialog("The Website URL field is required.", "Error");
+                dialog.ShowAsync();
+
+                return false;
+            }
+
+            if (Regex.IsMatch(this.txtURL.Text, @"^(http|https)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(/\S*)?$") == false)
+            {
+                MessageDialog dialog = new MessageDialog("Website URL is not valid.", "Error");
+                dialog.ShowAsync();
+                
+                return false;
+            }
+
+            if (Regex.IsMatch(this.txtEmailAddress.Text, @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$") == false)
+            {
+                MessageDialog dialog = new MessageDialog("The Email Address field is required.", "Error");
+                dialog.ShowAsync();
+                
+                return false;
+            }
+
+            if (this.txtEmailAddress.Text.Length <= 0)
+            {
+                MessageDialog dialog = new MessageDialog("Email Address is not valid.", "Error");
+                dialog.ShowAsync();
+                
+                return false;
+            }
+
+            return true;
         }
     }
 }
