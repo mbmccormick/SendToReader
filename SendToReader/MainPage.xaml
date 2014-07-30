@@ -27,7 +27,7 @@
             </Paragraph>
         </RichTextBlock>
 
-        <TextBlock Text="There are currently 0 website(s) in the queue waiting to be processed." FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,18" />
+        <TextBlock x:Name="txtQueueStatus" Text="There are currently 0 website(s) in the queue waiting to be processed." FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,18" />
 
         <Border BorderBrush="#FFCCCCCC" BorderThickness="0,1,0,0" Margin="-6,0,-6,18" />
 
@@ -36,7 +36,7 @@
 
     <Page.BottomAppBar>
         <CommandBar Background="#FF222222" Foreground="#FFFFFFFF">
-            <AppBarButton Label="Submit">
+            <AppBarButton Label="Submit" Click="AppBarButton_Click">
                 <AppBarButton.Icon>
                     <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#xE10B;"/>
                 </AppBarButton.Icon>
