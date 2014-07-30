@@ -19,7 +19,7 @@ namespace SendToReader
             // TODO: Prepare page for display here.
             var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
             statusBar.BackgroundOpacity = 1.0;
-            statusBar.BackgroundColor = Colors.Black;
+            statusBar.BackgroundColor = Color.FromArgb(255, 34, 34, 34);
 
             statusBar.ProgressIndicator.Text = "Send To Reader";
             statusBar.ProgressIndicator.ProgressValue = 0;

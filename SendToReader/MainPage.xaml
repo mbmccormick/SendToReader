@@ -9,14 +9,15 @@
     Background="#FFFFFFFF">
 
     <StackPanel x:Name="LayoutRoot" Margin="18,18,18,18">
-        <!--<TextBlock Text="SEND TO READER" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontWeight="ExtraBold" Foreground="#FF000000" Margin="0,0,0,12" />-->
-        <TextBlock Text="Send a website to your Kindle" FontSize="{StaticResource TextStyleExtraLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" Margin="0,0,0,36" />
-
+        <TextBlock Text="Send a website to your Kindle" FontSize="{StaticResource TextStyleExtraLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" Margin="0,12,0,18" />
+    
+        <Border BorderBrush="#FFCCCCCC" BorderThickness="0,1,0,0" Margin="-6,0,-6,18" />
+        
         <TextBlock Text="Website URL" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontWeight="SemiBold" Foreground="#FF000000" Margin="0,0,0,6" />
-        <TextBox x:Name="txtURL" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" BorderBrush="#FFCCCCCC" Margin="0,0,0,24" />
+        <TextBox x:Name="txtURL" PlaceholderText="http://www.bing.com" InputScope="Url" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" BorderBrush="#FFCCCCCC" Margin="0,0,0,24" />
 
         <TextBlock Text="Email Address" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontWeight="SemiBold" Foreground="#FF000000" Margin="0,0,0,6" />
-        <TextBox x:Name="txtEmailAddress" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" BorderBrush="#FFCCCCCC" Margin="0,0,0,36" />
+        <TextBox x:Name="txtEmailAddress" PlaceholderText="username@kindle.com" InputScope="EmailSmtpAddress" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" BorderBrush="#FFCCCCCC" Margin="0,0,0,36" />
 
         <RichTextBlock FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,24">
             <Paragraph LineHeight="24">
@@ -26,11 +27,15 @@
             </Paragraph>
         </RichTextBlock>
 
-        <TextBlock Text="There are currently 0 website(s) in the queue waiting to be processed." FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,36" />
+        <TextBlock Text="There are currently 0 website(s) in the queue waiting to be processed." FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,18" />
+
+        <Border BorderBrush="#FFCCCCCC" BorderThickness="0,1,0,0" Margin="-6,0,-6,18" />
+
+        <TextBlock Text="© 2014 Matt McCormick" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" TextWrapping="Wrap" Margin="0,0,0,36" />
     </StackPanel>
 
     <Page.BottomAppBar>
-        <CommandBar Background="#FF000000" Foreground="#FFFFFFFF">
+        <CommandBar Background="#FF222222" Foreground="#FFFFFFFF">
             <AppBarButton Label="Submit">
                 <AppBarButton.Icon>
                     <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#xE10B;"/>
