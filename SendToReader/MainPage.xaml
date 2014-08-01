@@ -9,6 +9,16 @@
     Background="#FFFFFFFF">
 
     <StackPanel x:Name="LayoutRoot" Margin="18,18,18,18">
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" VerticalAlignment="Center" Source="Assets/StoreLogo.png" Margin="0,0,0,0" />
+            <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="Send To Reader" FontSize="{StaticResource TextStyleExtraExtraLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontWeight="SemiBold" Foreground="#FF000000" Margin="12,0,0,0" />
+        </Grid>
+        
         <TextBlock Text="Send a website to your Kindle" FontSize="{StaticResource TextStyleExtraLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" Margin="0,12,0,18" />
     
         <Border BorderBrush="#FFCCCCCC" BorderThickness="0,1,0,0" Margin="-6,0,-6,18" />
@@ -35,8 +45,8 @@
     </StackPanel>
 
     <Page.BottomAppBar>
-        <CommandBar Background="#FF222222" Foreground="#FFFFFFFF">
-            <AppBarButton Label="Submit" Click="AppBarButton_Click">
+        <CommandBar Background="#FFC2C2C2" Foreground="#FF000000">
+            <AppBarButton Label="submit" Click="AppBarButton_Click">
                 <AppBarButton.Icon>
                     <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#xE10B;"/>
                 </AppBarButton.Icon>
