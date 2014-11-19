@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="#FFFFFFFF">
 
-    <StackPanel x:Name="LayoutRoot" Margin="18,18,18,18">
+    <StackPanel x:Name="LayoutRoot" Margin="18,18,18,0">
         <Grid Margin="0,0,0,12">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -24,7 +24,7 @@
         <Border BorderBrush="#FFCCCCCC" BorderThickness="0,1,0,0" Margin="-6,0,-6,18" />
         
         <TextBlock Text="Website URL" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontWeight="SemiBold" Foreground="#FF000000" Margin="0,0,0,6" />
-        <TextBox x:Name="txtURL" PlaceholderText="http://www.bing.com" InputScope="Url" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" BorderBrush="#FFCCCCCC" Margin="0,0,0,24" />
+        <TextBox x:Name="txtURL" IsTabStop="True" PlaceholderText="http://www.bing.com" InputScope="Url" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" BorderBrush="#FFCCCCCC" Margin="0,0,0,24" />
 
         <TextBlock Text="Email Address" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontWeight="SemiBold" Foreground="#FF000000" Margin="0,0,0,6" />
         <TextBox x:Name="txtEmailAddress" PlaceholderText="username@kindle.com" InputScope="EmailSmtpAddress" FontSize="{StaticResource TextStyleLargeFontSize}" FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="#FF000000" BorderBrush="#FFCCCCCC" Margin="0,0,0,36" />

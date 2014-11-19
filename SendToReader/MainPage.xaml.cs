@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using SendToReader.API;
 using SendToReader.API.Models;
 using Windows.Storage;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
 namespace SendToReader
@@ -54,6 +57,8 @@ namespace SendToReader
             statusBar.ProgressIndicator.ProgressValue = null;
             await statusBar.ProgressIndicator.ShowAsync();
 
+            this.txtEmailAddress.IsEnabled = false;
+            this.txtURL.IsEnabled = false;
             this.btnSubmit.IsEnabled = false;
         }
 
@@ -64,6 +69,8 @@ namespace SendToReader
             statusBar.ProgressIndicator.ProgressValue = 0.0;
             await statusBar.ProgressIndicator.ShowAsync();
 
+            this.txtEmailAddress.IsEnabled = true;
+            this.txtURL.IsEnabled = true;
             this.btnSubmit.IsEnabled = true;
         }
 
@@ -75,6 +82,9 @@ namespace SendToReader
             }
 
             ShowStatusBar();
+
+            this.IsTabStop = true;
+            this.Focus(Windows.UI.Xaml.FocusState.Keyboard);
 
             await ServiceClient.GetQueueStatus(async (result) =>
             {
