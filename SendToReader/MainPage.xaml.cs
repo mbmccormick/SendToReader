@@ -37,14 +37,34 @@ namespace SendToReader
             }
         }
 
-        private void RenderStatusBar()
+        private async void RenderStatusBar()
         {
             var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
             statusBar.ForegroundColor = Color.FromArgb(255, 0, 0, 0);
             statusBar.BackgroundOpacity = 0.0;
 
             statusBar.ProgressIndicator.ProgressValue = 0.0;
-            statusBar.ProgressIndicator.ShowAsync();
+            await statusBar.ProgressIndicator.ShowAsync();
+        }
+
+        private async void ShowStatusBar()
+        {
+            var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+
+            statusBar.ProgressIndicator.ProgressValue = null;
+            await statusBar.ProgressIndicator.ShowAsync();
+
+            this.btnSubmit.IsEnabled = false;
+        }
+
+        private async void HideStatusBar()
+        {
+            var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+
+            statusBar.ProgressIndicator.ProgressValue = 0.0;
+            await statusBar.ProgressIndicator.ShowAsync();
+
+            this.btnSubmit.IsEnabled = true;
         }
 
         private async void LoadData()
@@ -54,47 +74,39 @@ namespace SendToReader
                 this.txtEmailAddress.Text = ApplicationData.Current.RoamingSettings.Values["EmailAddress"] as string;
             }
 
-            var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+            ShowStatusBar();
 
-            statusBar.ProgressIndicator.ProgressValue = null;
-            statusBar.ProgressIndicator.ShowAsync();
-
-            await ServiceClient.GetQueueStatus((result) =>
+            await ServiceClient.GetQueueStatus(async (result) =>
             {
-                Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
                     this.txtQueueStatus.Text = result;
 
-                    statusBar.ProgressIndicator.ProgressValue = 0.0;
-                    statusBar.ProgressIndicator.ShowAsync();
+                    HideStatusBar();
                 });
             });
         }
 
-        private async void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void btnSubmit_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             if (ValidateData() == false)
                 return;
 
             ApplicationData.Current.RoamingSettings.Values["EmailAddress"] = this.txtEmailAddress.Text;
 
-            var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-
-            statusBar.ProgressIndicator.ProgressValue = null;
-            statusBar.ProgressIndicator.ShowAsync();
+            ShowStatusBar();
 
             ReaderDocument data = new ReaderDocument();
             data.URL = this.txtURL.Text;
             data.EmailAddress = this.txtEmailAddress.Text;
 
-            await ServiceClient.InsertWebsite((result) =>
+            await ServiceClient.InsertWebsite(async (result) =>
             {
-                Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                 {
                     this.txtQueueStatus.Text = result;
 
-                    statusBar.ProgressIndicator.ProgressValue = 0.0;
-                    statusBar.ProgressIndicator.ShowAsync();
+                    HideStatusBar();
 
                     this.txtURL.Text = "";
 
@@ -105,7 +117,7 @@ namespace SendToReader
                     else
                     {
                         MessageDialog dialog = new MessageDialog("Your website has been submitted successully. Depending on the length of the queue, it should appear on your Kindle in a few minutes.", "Success");
-                        dialog.ShowAsync();
+                        await dialog.ShowAsync();
                     }
                 });
             }, data);

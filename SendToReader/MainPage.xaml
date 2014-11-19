@@ -46,11 +46,7 @@
 
     <Page.BottomAppBar>
         <CommandBar Background="#FFC2C2C2" Foreground="#FF000000">
-            <AppBarButton Label="submit" Click="AppBarButton_Click">
-                <AppBarButton.Icon>
-                    <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#xE10B;"/>
-                </AppBarButton.Icon>
-            </AppBarButton>
+            <AppBarButton x:Name="btnSubmit" Icon="Accept" Label="submit" Click="btnSubmit_Click" />
         </CommandBar>
     </Page.BottomAppBar>
 </Page>
