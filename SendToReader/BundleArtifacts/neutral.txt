@@ -1,4 +1,4 @@
-MainPackage=C:\Users\mattmc\Documents\Visual Studio 2013\Projects\SendToReader\SendToReader\bin\Release\SendToReader_1.1.0.3_Bundle\SendToReader_1.1.0.3_AnyCPU.appx
-SymbolPackage=C:\Users\mattmc\Documents\Visual Studio 2013\Projects\SendToReader\SendToReader\AppPackages\SendToReader_1.1.0.3_Test\SendToReader_1.1.0.3_AnyCPU.appxsym
-ResourcePack=C:\Users\mattmc\Documents\Visual Studio 2013\Projects\SendToReader\SendToReader\bin\Release\SendToReader_1.1.0.3_Bundle\SendToReader_1.1.0.3_scale-100.appx
-ResourcePack=C:\Users\mattmc\Documents\Visual Studio 2013\Projects\SendToReader\SendToReader\bin\Release\SendToReader_1.1.0.3_Bundle\SendToReader_1.1.0.3_scale-140.appx
+MainPackage=C:\Users\mattmc\Documents\Visual Studio 2013\Projects\SendToReader\SendToReader\bin\Release\SendToReader_1.1.0.4_Bundle\SendToReader_1.1.0.4_AnyCPU.appx
+SymbolPackage=C:\Users\mattmc\Documents\Visual Studio 2013\Projects\SendToReader\SendToReader\AppPackages\SendToReader_1.1.0.4_Test\SendToReader_1.1.0.4_AnyCPU.appxsym
+ResourcePack=C:\Users\mattmc\Documents\Visual Studio 2013\Projects\SendToReader\SendToReader\bin\Release\SendToReader_1.1.0.4_Bundle\SendToReader_1.1.0.4_scale-100.appx
+ResourcePack=C:\Users\mattmc\Documents\Visual Studio 2013\Projects\SendToReader\SendToReader\bin\Release\SendToReader_1.1.0.4_Bundle\SendToReader_1.1.0.4_scale-140.appx
